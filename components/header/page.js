@@ -29,7 +29,7 @@ function Header() {
             </li>
             <li>
               <button className='--btn --btn-primary'>
-                  <Link href='#' >Login</Link>
+                  <Link href='/auth/login' >Login</Link>
               </button>
             </li>
             <li className='--btn --btn-primary'>

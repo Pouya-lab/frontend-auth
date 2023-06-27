@@ -2,18 +2,25 @@
 
 import Card from '@/components/card/page'
 import PasswordInput from '@/components/passwordInput/page'
-import {BiLogIn} from 'react-icons/bi'
+import {TiUserAddOutline} from 'react-icons/ti'
 import {React , useState} from 'react';
 import Link from 'next/link';
-
-import styles from  '../auth.module.scss'
+import styles from '../auth.module.scss'
 //for using states we need to import both state and react and also add use client at the top of our page
 
 
-function Login() {
+const initialState = {
+    name : "" ,
+    password : "" ,
+    password2 : "" ,
+    email : ""
+}
 
-    const [email , setEmail] = useState('')
-    const [password , setPassword] = useState('')
+function Register() {
+
+    const [formData , setFormData] = useState(initialState)
+    const {name , email , password , password2 } = formData
+    //code above helps us to write name and other properties easier than formData.name , formData.email and .....
 
     const handleInputeChange = () =>{
 
@@ -30,21 +37,24 @@ function Login() {
                 <div className={styles.form}>
 
                     <div className="--flex-center">
-                        <BiLogIn size={35} color='#999' />
+                        <TiUserAddOutline size={35} color='#999' />
                     </div>
                     <h2>
-                        Login
+                        Register
                     </h2>
-                    <div className="--flex-center">
-                        <button className="--btn --btn-google">
-                            Login with Google
-                        </button>
-                    </div>
-                    <br />
+
                     <p className="--text-center --fw-bold" >or</p>
 
                     <form onSubmit={loginUser} action="" >
                         <input 
+                        type="text" 
+                        placeholder='Name'
+                        required
+                        name='name'
+                        value={name}
+                        onChange={handleInputeChange}
+                        />
+                         <input 
                         type="email" 
                         placeholder='email'
                         required
@@ -52,14 +62,6 @@ function Login() {
                         value={email}
                         onChange={handleInputeChange}
                         />
-                        {/* <input 
-                        type="password" 
-                        placeholder='password'
-                        required
-                        name='password'
-                        value={password}
-                        onChange={handleInputeChange}
-                        /> */}
                         <PasswordInput
                             type="password" 
                             placeholder='password'
@@ -68,18 +70,23 @@ function Login() {
                             value={password}
                             onChange={handleInputeChange}
                         />
+                        <PasswordInput
+                            type="password" 
+                            placeholder=' Confirm Password'
+                            required
+                            name='password2'
+                            value={password2}
+                            onChange={handleInputeChange}
+                        />
                         <button type='submit' className='--btn --btn-primary w-full' >
-                            Login
+                            Register
                         </button>
                     </form>
-                    <Link href="/forgot" >
-                        Forgotten Password??
-                    </Link>
                     <span className={styles.register} >
                         <Link href='/' >Home</Link>
-                        <p> &nbsp; Don't have an account?</p>
-                        <Link href="/auth/register" >
-                            Register
+                        <p> &nbsp; Already have an account?</p>
+                        <Link href="/auth/login" >
+                            Login
                         </Link>
                     </span>
                 </div>
@@ -89,4 +96,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register

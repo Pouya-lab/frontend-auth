@@ -4,6 +4,7 @@ import Header from "@/components/header/page"
 import Image from 'next/image'
 import baymax from '../assets/baymax.jpg'
 import Layout from '@/components/layout/page'
+import Link from 'next/link'
 
 
 function Index() {
@@ -23,8 +24,16 @@ function Index() {
                 Using Node JS Next Js MongoDB Express JS
               </p>
               <div className="hero-buttons --flex-start">
-                <button className="--btn --btn-danger">Register</button>
-                <button className="--btn --btn-primary">Login</button>
+                <button className="--btn --btn-danger">
+                  <Link href="/auth/register" >
+                    Register
+                  </Link>
+                </button>
+                <button className="--btn --btn-primary">
+                  <Link href="/auth/login" >
+                    Login
+                  </Link>
+                </button>
               </div>
             </div>
 
