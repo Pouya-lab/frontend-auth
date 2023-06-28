@@ -4,10 +4,10 @@ import Card from '@/components/card/page'
 import PasswordInput from '@/components/passwordInput/page'
 import {TiUserAddOutline} from 'react-icons/ti'
 import { BsCheck2All } from 'react-icons/bs';
-import {React , useState} from 'react';
+import { FaTimes } from 'react-icons/fa';
+import {React , useEffect, useState} from 'react';
 import Link from 'next/link';
 import styles from '../auth.module.scss'
-import { FaTimes } from 'react-icons/fa';
 //for using states we need to import both state and react and also add use client at the top of our page
 
 
@@ -45,6 +45,57 @@ function Register() {
          const {name , value} = e.target
          setFormData({ ...formData , [name] : value })
     }
+
+    // Password Strength
+// Check Lower and Uppercase
+// match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)
+
+// Check For Numbers
+// match(/([0-9])/)
+
+// Check For Special char
+// match(/([!,%,&,@,#,$,^,*,?,_,~])/)
+
+// Check email
+// match: [
+//         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+//         "Please enter a valid emaial",
+//       ],
+
+
+// Validate email
+// export const validateEmail = (email) => {
+//   return email.match(
+//     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+//   );
+// };
+
+    //checking for password strength
+    useEffect( () => {
+        //checking for uppercase and lowercase password
+        if(password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)){
+            setUpperCase(true)
+        }
+        else{
+            setUpperCase(false)
+        }
+        if (password.match(/(["0-9"])/)) {
+            setNum(true)
+        } else {
+            setNum(false)
+        }
+        if (password.match(/([!,%,&,@,#,$,^,*,?,_,~,'])/)) {
+            setSpecialChar(true)
+        } else {
+            setSpecialChar(false)
+        }
+        if (password.length > 5) {
+            setPassLenght(true)
+        } else {
+            setPassLenght(false)
+        }
+    }, [password] )
+    
 
     const loginUser = () =>{
 
@@ -111,7 +162,7 @@ function Register() {
                                 <li>
                                     <span className={styles.indicator}>
                                         {switchIcon(num)}
-                                        &nbsp; Number 0-9
+                                        &nbsp; Number (0-9)
                                     </span>
                                 </li>
                                 <li>
