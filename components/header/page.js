@@ -33,7 +33,7 @@ function Header() {
               </button>
             </li>
             <li className='--btn --btn-primary'>
-              <Link href='#' >Profile</Link>
+              <Link href='/profile' >Profile</Link>
             </li>
             <li>
               <button className='--btn --btn-secondary'>

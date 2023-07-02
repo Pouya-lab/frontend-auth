@@ -72,11 +72,13 @@ function Login() {
                             Login
                         </button>
                     </form>
-                    <Link href="/forgot" >
+                    <Link href="/auth/forgot-pass" >
                         Forgotten Password??
                     </Link>
                     <span className={styles.register} >
-                        <Link href='/' >Home</Link>
+                        <Link href='/' >
+                            Home
+                        </Link>
                         <p> &nbsp; Don't have an account?</p>
                         <Link href="/auth/register" >
                             Register
