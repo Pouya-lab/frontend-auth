@@ -52,14 +52,6 @@ function Login() {
                         value={email}
                         onChange={handleInputeChange}
                         />
-                        {/* <input 
-                        type="password" 
-                        placeholder='password'
-                        required
-                        name='password'
-                        value={password}
-                        onChange={handleInputeChange}
-                        /> */}
                         <PasswordInput
                             type="password" 
                             placeholder='password'
