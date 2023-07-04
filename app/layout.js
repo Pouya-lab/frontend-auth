@@ -13,9 +13,8 @@ export default function RootLayout({ children }) {
   return (
       <html lang="en" >
         <body className={inter.className}>
-          <div className="loader">
+          <div className="loader"></div>
             {children}
-          </div>
           </body>
       </html>
   )

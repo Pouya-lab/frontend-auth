@@ -1,18 +1,24 @@
-import '../styles/vendor/home.scss'
-import Footer from "@/components/footer/page"
-import Header from "@/components/header/page"
-import Image from 'next/image'
+"use client"
+
 import baymax from '../assets/baymax.jpg'
 import Layout from '@/components/layout/page'
+import Image from 'next/image'
 import Link from 'next/link'
 
+import '../styles/vendor/home.scss'
+import { useState } from 'react'
+import Loader from '@/components/loader/page'
 
 function Index() {
+
+  const [show , setShow] = useState(true)
+
   return (
     <>
-        <Layout>
+        { !show ? <Loader/> : (
+          <>
+            <Layout>
           <section className="container hero" >
-
             <div className="hero-text">
               <h2>
                 Ultimate MERN Stack Authentication App
@@ -43,6 +49,8 @@ function Index() {
 
         </section>
         </Layout>
+          </>
+        ) }
     </>
   )
 }
